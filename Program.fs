@@ -3,7 +3,6 @@
 open System
 open Microsoft.AspNetCore.Builder
 open Microsoft.AspNetCore.Hosting
-open Microsoft.AspNetCore.Http
 open Microsoft.Extensions.DependencyInjection
 open Microsoft.Extensions.Logging
 open Giraffe.Middleware
@@ -13,10 +12,12 @@ open System.IO
 let staticFileOptions = StaticFileOptions()
 
 let configureApp (app : IApplicationBuilder) =
-  app.UseStatusCodePagesWithReExecute "/{0}" |> ignore
-  app.UseExceptionHandler "/500" |> ignore
-  app.UseGiraffe Main.app
-  app.UseStaticFiles staticFileOptions |> ignore
+  app
+    .UseStatusCodePagesWithReExecute("/{0}")
+    .UseExceptionHandler("/500")
+    .UseStaticFiles(staticFileOptions)
+    .UseGiraffe Main.app
+  |> ignore
 
 let configureServices (services : IServiceCollection) =
   Path.Combine(Directory.GetCurrentDirectory(), "Views")
@@ -24,7 +25,7 @@ let configureServices (services : IServiceCollection) =
   |> ignore
 
 [<EntryPoint>]
-let main args =
+let main _ =
   let builder =
     WebHostBuilder()
       .UseKestrel()

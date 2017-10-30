@@ -11,7 +11,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Server.IISIntegration" Version="*" />
     <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="*" />
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="*" />
-    <PackageReference Include="Giraffe" Version="0.1.0-beta-101" />
+    <PackageReference Include="Giraffe" Version="0.1.0-beta-200" />
     <PackageReference Include="Giraffe.Razor" Version="0.1.0-beta-100" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="*" />
      <None Include="Views/*.cshtml">
